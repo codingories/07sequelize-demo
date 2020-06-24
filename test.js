@@ -28,7 +28,13 @@ User.init(
 //   });
 
 async function run() {
+  User.destroy({
+    where: {
+      id: 1,
+    },
+  });
   const users = await User.findAll();
   console.log(JSON.stringify(users));
+  sequelize.close();
 }
 run();
