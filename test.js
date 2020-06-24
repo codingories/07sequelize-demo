@@ -13,16 +13,22 @@ User.init(
   { sequelize, modelName: "user" }
 );
 // 同步到数据库
-sequelize
-  // 创建一条记录
-  .sync() // 同步
-  .then(() =>
-    User.create({
-      username: "janedoe",
-      birthday: new Date(1980, 6, 20),
-    })
-  )
-  // 打印结果
-  .then((jane) => {
-    console.log(jane.toJSON());
-  });
+// sequelize
+//   // 创建一条记录
+//   .sync() // 同步
+//   .then(() =>
+//     User.create({
+//       username: "janedoe",
+//       birthday: new Date(1980, 6, 20),
+//     })
+//   )
+//   // 打印结果
+//   .then((jane) => {
+//     console.log(jane.toJSON());
+//   });
+
+async function run() {
+  const users = await User.findAll();
+  console.log(JSON.stringify(users));
+}
+run();
